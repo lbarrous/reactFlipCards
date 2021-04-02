@@ -7,7 +7,6 @@ export interface CardHeaderProps {
 
 const CardHeader = (props: CardHeaderProps) => {
   const { imgSrc } = props;
-  console.log(imgSrc);
   return <StyledCardHeader imgSrc={imgSrc} />;
 };
 

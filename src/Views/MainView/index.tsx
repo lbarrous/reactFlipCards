@@ -3,11 +3,16 @@ import { StyledMainView } from "./styles";
 import Card from "../../Components/Card";
 import Modal from "../../Components/Modal";
 import Form from "../../Components/Form";
+import { CardState } from "../../Store/types";
+import { useSelector } from "react-redux";
+import { CardSelector } from "../../Store/Actions/cardActions";
 
 const MainView = () => {
+  const { cards }: CardState = useSelector(CardSelector);
+  console.log(cards);
   return (
     <StyledMainView>
-        <Modal handleClose={() => {}} isOpen={false}>
+        <Modal handleClose={() => {}} isOpen={true}>
           <Form onSubmit={() => {}}/>
         </Modal>
       <Card
