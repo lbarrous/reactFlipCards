@@ -9,7 +9,7 @@ export const initialState: CardState = {
 const setCard = (state: CardState, action: CardActionTypes) => {
   return {
     ...state,
-    isLoading: action.payload
+    cards: state.cards.concat(action.payload)
   };
 };
 
@@ -19,9 +19,9 @@ const strategies = {
 
 type TypeOfStrategies = typeof strategies;
 
-const stepReducer = createReducer<TypeOfStrategies, CardState>(
+const cardReducer = createReducer<TypeOfStrategies, CardState>(
   strategies,
   initialState
 );
 
-export default stepReducer;
+export default cardReducer;

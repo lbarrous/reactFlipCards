@@ -11,7 +11,7 @@ export type CardActionTypes = SetCardActionType;
 
 /* Action creators */
 
-export const setCard = (card: CardInfo): CardActionTypes => {
+export const setNewCard = (card: CardInfo): CardActionTypes => {
   return {
     type: SET_CARD,
     payload: card

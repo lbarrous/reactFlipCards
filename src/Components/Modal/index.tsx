@@ -17,7 +17,7 @@ const Modal = (props: ModalProps) => {
 
   return (
     (isOpen && (
-      <StyledModalWrapper role="dialog" aria-modal="true" onClick={handleClose}>
+      <StyledModalWrapper role="dialog" aria-modal="true">
         <StyledModalArea>
           <StyledCloseButton
             aria-label="Close Modal"
