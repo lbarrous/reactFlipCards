@@ -18,3 +18,5 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
   desktopL: `(min-width: ${size.desktop})`
 };
+
+export const DEFAULT_IMG_URL = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
