@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { CardInfo } from "../Store/types";
 import { FormErrors } from "../Validation/formValidation";
+import {v4 as uuidv4} from 'uuid';
 
 const useForm = (
   onSubmit: (card: CardInfo) => void,
-  validate: (card: CardInfo) => FormErrors
+  validate: (card: CardInfo) => FormErrors,
+  carToEdit?: CardInfo
 ) => {
-  const [card, setCard] = useState<CardInfo>({
-    title: "",
-    description: "",
-    imgSrc: ""
-  });
+    const cardValues = carToEdit || {
+        id: uuidv4(),
+        title: "",
+        description: "",
+        imgSrc: "",
+        creationDate: new Date()
+    }
+  const [card, setCard] = useState<CardInfo>(cardValues);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const handleSubmit = (event: any) => {

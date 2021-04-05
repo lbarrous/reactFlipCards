@@ -11,15 +11,18 @@ import useForm from "../../Hooks/useForm";
 import validate from "../../Validation/formValidation";
 
 export interface FormProps {
+    cardToEdit?: CardInfo;
   onSubmit: (card: CardInfo) => void;
 }
 
 export const Form = (props: FormProps) => {
-  const { onSubmit } = props;
+  const { onSubmit, cardToEdit } = props;
 
+  console.log(cardToEdit)
   const { card, handleChange, handleSubmit, errors } = useForm(
     onSubmit,
-    validate
+    validate,
+    cardToEdit
   );
 
   return (

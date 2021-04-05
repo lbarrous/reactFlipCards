@@ -1,19 +1,24 @@
 import React, { useState, useCallback } from "react";
-import { StyledMainView, StyledCardWrapper } from "./styles";
+import { StyledMainView, StyledCardWrapper, StyledButtonGroup } from "./styles";
 import Card from "../../Components/Card";
 import Modal from "../../Components/Modal";
 import Form from "../../Components/Form";
 import { CardState, CardInfo } from "../../Store/types";
 import { useSelector, useDispatch } from "react-redux";
-import { CardSelector, setNewCard } from "../../Store/Actions/cardActions";
+import { CardSelector, setCard } from "../../Store/Actions/cardActions";
 import { AppDispatch } from "../../Store";
 import { StyledButton } from "../../Components/Form/styles";
 
 const MainView = () => {
   const { cards }: CardState = useSelector(CardSelector);
-  console.log(cards);
   const dispatch: AppDispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [cardToEdit, setCardToEdit] = useState<CardInfo>(null as any);
+
+  const handleCardEdit = useCallback((id: string) => {
+    setCardToEdit(cards.find((card: CardInfo) => card.id === id) || null as any);
+    setModalIsOpen(true);
+  }, [cards]);
 
   const handleModalClose = useCallback(() => {
     setModalIsOpen(!modalIsOpen);
@@ -21,7 +26,7 @@ const MainView = () => {
 
   const handlenewCardSubmit = useCallback(
     (newCard: CardInfo) => {
-      dispatch(setNewCard(newCard));
+      dispatch(setCard(newCard));
       setModalIsOpen(false);
     },
     [dispatch]
@@ -30,19 +35,25 @@ const MainView = () => {
   return (
     <StyledMainView>
       <h2>Cards</h2>
-      <div>
+      <StyledButtonGroup>
         <StyledButton onClick={handleModalClose}>Add new Card</StyledButton>
-      </div>
+      </StyledButtonGroup>
+      <StyledButtonGroup>
+        <StyledButton onClick={handleModalClose}>Order by Title</StyledButton>
+        <StyledButton onClick={handleModalClose}>Order by Date</StyledButton>
+      </StyledButtonGroup>
       <Modal handleClose={handleModalClose} isOpen={modalIsOpen}>
-        <Form onSubmit={handlenewCardSubmit} />
+        <Form onSubmit={handlenewCardSubmit} cardToEdit={cardToEdit} />
       </Modal>
       <StyledCardWrapper>
-        {cards.map((card, index) => (
+        {cards.map(card => (
           <Card
-            key={index}
+            key={card.id}
+            id={card.id}
             imgSrc={card.imgSrc}
             title={card.title}
             description={card.description}
+            onEdit={handleCardEdit}
           />
         ))}
       </StyledCardWrapper>

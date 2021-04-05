@@ -34,6 +34,7 @@ export const StyledError = styled.p`
 
 export const StyledButton = styled.button`
   display: inline-block;
+  margin: 0.5rem;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;

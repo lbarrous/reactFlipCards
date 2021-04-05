@@ -14,5 +14,10 @@ export const StyledCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 1rem;
+`;
+
+export const StyledButtonGroup = styled.div`
+  margin: 0.25rem
 `;
 

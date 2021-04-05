@@ -1,8 +1,7 @@
 import React from "react";
 import {
   StyledCardBody,
-  StyledCardBodyTitle,
-  StyledCardBodyDescription
+  StyledCardBodyTitle
 } from "./styles";
 
 export interface CardBodyProps {
@@ -14,7 +13,7 @@ export const CardBody = (props: CardBodyProps) => {
   return (
     <StyledCardBody>
       <StyledCardBodyTitle>{title}</StyledCardBodyTitle>
-      <StyledCardBodyDescription>{description}</StyledCardBodyDescription>
+      <p>{description}</p>
     </StyledCardBody>
   );
 };

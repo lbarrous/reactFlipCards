@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-export const StyledCardHeader = styled.div<{ imgSrc: string }>`
-  position: relative;
-  display: flex;
-  flex: 0 0 auto;
-  height: 50%;
-
+export const StyledCardHeader = styled.img<{ imgSrc: string }>`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 0.25rem 0.25rem 0 0;
   background-image: url(${props => props.imgSrc});
 `;
