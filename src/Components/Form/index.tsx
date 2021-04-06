@@ -18,7 +18,6 @@ export interface FormProps {
 export const Form = (props: FormProps) => {
   const { onSubmit, cardToEdit } = props;
 
-  console.log(cardToEdit)
   const { card, handleChange, handleSubmit, errors } = useForm(
     onSubmit,
     validate,
@@ -36,6 +35,7 @@ export const Form = (props: FormProps) => {
           placeholder="Title"
           onChange={e => handleChange(e)}
           hasError={!!errors.title}
+          aria-label="title"
         />
         {errors.title && <StyledError>{errors.title}</StyledError>}
       </StyledFormGroup>
@@ -48,6 +48,7 @@ export const Form = (props: FormProps) => {
           placeholder="Description"
           onChange={e => handleChange(e)}
           hasError={!!errors.description}
+          aria-label="description"
         />
         {errors.description && (
           <StyledError>{errors.description}</StyledError>
@@ -61,6 +62,7 @@ export const Form = (props: FormProps) => {
           value={card.imgSrc || ""}
           placeholder="https://myimageurl.com"
           onChange={e => handleChange(e)}
+          aria-label="imgSrc"
         />
       </StyledFormGroup>
       <StyledFormGroup>
